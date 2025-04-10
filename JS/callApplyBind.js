@@ -10,3 +10,6 @@ const person = {
 const greetAra = greet.bind(person,"Hello");
 
 greetAra();
+person.name = "Sujith";
+
+greetAra();
