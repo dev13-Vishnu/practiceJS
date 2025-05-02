@@ -36,12 +36,14 @@
 // 💡 Hint: Use an accumulator initialized to 1.
 let evenProdArray = [1, 2, 3, 4, 5, 6];
 let product = evenProdArray. reduce((acc,curr) => {
-    if(curr % 2 === 0){
-        return acc * curr;
-    }else {
-        acc
-    }
-    return acc;
+
+    return      curr % 2 === 0? acc* curr : acc
+    // if(curr % 2 === 0){
+    //     return acc * curr;
+    // }else {
+    // return  acc
+    // }
+    //  acc;
 })
 console.log ("Product of all even numbers in an array:",product);
 // 2. Count the Occurrences of Each Element

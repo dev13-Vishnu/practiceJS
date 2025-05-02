@@ -29,6 +29,7 @@ class MinHeap{
     bubbleDown() {
         let index =  0;
         let length = this.heap.length;
+        let swap = null;
         while(true) {
             let leftChildIndex = 2 * index + 1;
             let rightChildIndex = 2 * index + 2;
@@ -36,7 +37,7 @@ class MinHeap{
             if(leftChildIndex < length && this.heap[index] < this.heap[leftChildIndex]){
                 swap = leftChildIndex;
             }
-            if(rightChildIndex < length && this.heap[index] < this.head[rightChildIndex]) {
+            if(rightChildIndex < length && this.heap[index] < this.heap[rightChildIndex]) {
                 swap = rightChildIndex;
             }
             if(!swap) break;
