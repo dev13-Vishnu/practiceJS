@@ -1,42 +1,41 @@
-function merge(arr, lb,mid, ub) {
-    let b = [];
-    let i = lb;
-    let j = mid + 1;
-    let k = lb
-
-    while(i<= mid && j<= ub) {
-        if(arr[i] < arr[j]) {
-            b[k] = arr[i];
-            i++
-        } else {
-            b[k] = arr[j];
-            j++
-        }
-        k++
-    }
-    while(i<= mid) {
-        b[k] = arr[i];
-        k++;
-        i++;
-    }
-    while(j<= ub){
-        b[k] = arr[j];
-        k++;
-        j++;
-    }
-
-    for(let x = lb; x <=ub; x++) {
-        arr[x] = b[x];
-    }
+function merge(arr, lb, mid, ub) {
+	let b =[];
+	let i = lb;
+	let j = mid + 1;
+	let k = lb;
+	
+	while(i <= mid&& j <= ub) {
+		if(arr[i] < arr[j]) {
+			b[k] = arr[i];
+			i++;
+		} else {
+			b[k] = arr[j];
+			j++;
+		}
+		k++
+	}
+	while (i <= mid) {
+		b[k] = arr[i];
+		i++;
+		k++;
+	}
+	while(j <= ub) {
+	b[k]= arr[j];
+	j++;
+	k++;
+	}
+	for(let x = lb; x <= ub; x++) {
+		arr[x] = b[x];
+	}
 }
-function mergeSort(arr, lb= 0, ub= arr.length-1){
-    if(lb < ub) {
-        let mid = Math.floor((lb+ub)/2);
-        mergeSort(arr,lb, mid);
-        mergeSort(arr, mid+1,ub);
-        merge(arr,lb,mid, ub);
-    }
 
+function mergeSort (arr, lb= 0, ub= arr.length -1) {
+	if(lb < ub) {
+		let mid = Math.floor((ub+ lb)/2);
+		mergeSort(arr,lb,mid);
+		mergeSort(arr,mid + 1, ub);
+		merge(arr,lb, mid, ub);
+	}
 }
 
 
