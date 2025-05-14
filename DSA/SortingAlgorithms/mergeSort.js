@@ -1,4 +1,4 @@
-function merge(arr, lb, mid, ub) {
+ 	function merge(arr, lb, mid, ub) {
 	let b =[];
 	let i = lb;
 	let j = mid + 1;

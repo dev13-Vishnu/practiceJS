@@ -15,4 +15,4 @@ function secondLargestWord(str) {
 }
 
 
-console.log(secondLargestWord("I love developing fullStack applications."))
+console.log(secondLargestWord("I love building fullStack applications."))
