@@ -1,0 +1,430 @@
+## Currying
+
+- It is a a technique of transforming a function that takes multiple arguments into a sequence of functions that each take a single argument.
+- can create reusable functions
+- function composition  : makes it easier to build complex  functions from smaller functions.
+- cleaner code.
+- helps us to create partially applied functions.
+
+### Real-world Use Case of Currying: **Event Tracking / Analytics**
+
+Imagine you're building a web app and want to **track user interactions** like button clicks, page views, or form submissions. You can use currying to **create reusable tracking functions** based on context.
+
+### 🔧 Without Currying:
+
+```jsx
+function trackEvent(category, action, label) {
+  console.log(`Category: ${category}, Action: ${action}, Label: ${label}`);
+}
+
+trackEvent('Button', 'Click', 'Signup Button');
+trackEvent('Form', 'Submit', 'Contact Form');
+```
+
+### 🔥 With Currying (More Reusable & Clean):
+
+```jsx
+function trackEvent(category) {
+  return function(action) {
+    return function(label) {
+      console.log(`Category: ${category}, Action: ${action}, Label: ${label}`);
+    };
+  };
+}
+
+// Create pre-configured trackers
+const trackButtonClick = trackEvent('Button')('Click');
+const trackFormSubmit = trackEvent('Form')('Submit');
+
+// Use them
+trackButtonClick('Signup Button');
+trackFormSubmit('Contact Form');
+```
+
+This is helpful when you:
+
+- Have a common category (`Button`, `Form`)
+- Want to simplify repeated logic
+- Build libraries (like analytics or logging)
+
+### 🧠 Even Cleaner with Arrow Functions:
+
+```jsx
+const trackEvent = category => action => label => {
+  console.log(`Category: ${category}, Action: ${action}, Label: ${label}`);
+};
+
+trackEvent('Button')('Click')('Signup Button');
+```
+
+### Other Real Use Cases of Currying:
+
+- **Validation logic**: Preload rules and apply to multiple fields.
+- **React `onChange` handlers**: Pass partial config to event functions.
+- **Authorization middleware** in Node.js: `checkPermission(role)(action)(req, res)`.
+
+### **1. Event Tracking / Logging**
+
+(As shown before)
+
+```jsx
+js
+Copy code
+trackEvent('Form')('Submit')('Login Form');
+trackEvent('Button')('Click')('Logout');
+```
+
+### **2. Authorization & Role Checking (e.g., in Express middleware)**
+
+```jsx
+const checkPermission = role => action => (req, res, next) => {
+  if (hasAccess(req.user, role, action)) next();
+  else res.status(403).send('Forbidden');
+};
+
+// Usage
+app.get('/admin', checkPermission('admin')('read'), handler);
+```
+
+### **3. Styling Components (Theming)**
+
+```jsx
+const applyTheme = theme => component => {
+  // logic to wrap or apply styles
+  return styledComponent;
+};
+
+applyTheme('dark')(Button);
+applyTheme('light')(Card);
+```
+
+### **4. API Request Builders**
+
+```jsx
+const makeRequest = method => endpoint => data => {
+  return fetch(endpoint, {
+    method,
+    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' }
+  });
+};
+
+// Predefined calls
+const postUser = makeRequest('POST')('/api/users');
+postUser({ name: 'Vishnu', age: 21 });
+```
+
+### **5. Form Field Validators**
+
+```jsx
+const minLength = length => value => value.length >= length;
+
+const isUsernameValid = minLength(5);
+console.log(isUsernameValid('vish')); // false
+```
+
+### **6. Custom React Hooks Logic with Configurable Behavior**
+
+```jsx
+const useStorage = storageType => key => {
+  const [value, setValue] = useState(() => JSON.parse(storageType.getItem(key)));
+  useEffect(() => {
+    storageType.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+  return [value, setValue];
+};
+
+// Usage
+const useLocalStorage = useStorage(localStorage);
+const [name, setName] = useLocalStorage('username');
+```
+
+### **7. Event Binding with Parameters**
+
+```jsx
+const handleChange = field => event => {
+  setForm(prev => ({ ...prev, [field]: event.target.value }));
+};
+
+// Usage in JSX:
+<input onChange={handleChange('email')} />
+<input onChange={handleChange('password')} />
+```
+
+### **8. Internationalization / Translations**
+
+```jsx
+const t = language => key => translations[language][key];
+
+// Usage
+const tEn = t('en');
+console.log(tEn('greeting')); // "Hello"
+
+const tFr = t('fr');
+console.log(tFr('greeting')); // "Bonjour"
+```
+
+### **9. Reusable Math/Utility Functions**
+
+```jsx
+const multiply = a => b => a * b;
+const double = multiply(2);
+console.log(double(5)); // 10
+```
+
+### **10. Redux-like Action Creators**
+
+```jsx
+const createAction = type => payload => ({ type, payload });
+
+const setUser = createAction('SET_USER');
+dispatch(setUser({ name: 'Vishnu' }));
+```
+
+
+
+## Accessing Nested Objects
+
+### 1: with **Dot Notation**
+
+```jsx
+const user = {
+  name: 'Vishnu',
+  address: {
+    city: 'Chennai',
+    zip: {
+      code: 600001
+    }
+  }
+};
+
+console.log(user.address.city);       // 'Chennai'
+console.log(user.address.zip.code);   // 600001
+```
+
+### 2: with **Bracket Notation**
+
+Use this if the key is dynamic or has special characters:
+
+```jsx
+const user = {
+  name: 'Vishnu',
+  'user-details': {
+    age: 25
+  }
+};
+
+console.log(user['user-details']['age']); // 25
+```
+
+### 3: **Safe Access with Optional Chaining** (ES2020+)
+
+To prevent runtime errors if a nested key is undefined:
+
+```jsx
+const user = {
+  name: 'Vishnu',
+  address: null
+};
+
+console.log(user.address?.city); // undefined (no error)
+```
+
+### Example 4: Accessing Dynamically with Variables
+
+```jsx
+const key = 'name';
+console.log(user[key]); // 'Vishnu'
+```
+
+### ❗ Tip: When accessing deeply nested keys, always check for existence or use optional chaining to avoid errors.
+
+## Pattern Questions
+
+### 🔹 **Basic Star Patterns**
+
+### **Right-angled triangle**
+
+```markdown
+*
+**
+***
+****
+```
+
+### **Inverted right-angled triangle**
+
+```markdown
+****
+***
+**
+*
+```
+
+### **Pyramid pattern**
+
+```markdown
+   *
+  ***
+ *****
+*******
+```
+
+### **Inverted pyramid**
+
+```markdown
+*******
+ *****
+  ***
+   *
+```
+
+### **Diamond pattern**
+
+```markdown
+   *
+  ***
+ *****
+  ***
+   *
+```
+
+### 🔹 **Number Patterns**
+
+### **Number triangle**
+
+```yaml
+1
+12
+123
+1234
+```
+
+### **Inverted number triangle**
+
+```yaml
+1234
+123
+12
+1
+```
+
+### **Right-aligned number triangle**
+
+```yaml
+   1
+  12
+ 123
+1234
+```
+
+### **Floyd's Triangle**
+
+```markdown
+1
+2 3
+4 5 6
+7 8 9 10
+```
+
+### **Pascal’s Triangle**
+
+```markdown
+    1
+   1 1
+  1 2 1
+ 1 3 3 1
+```
+
+### 🔹 **Alphabet Patterns**
+
+### **Alphabet triangle**
+
+```css
+A
+AB
+ABC
+ABCD
+```
+
+### **Inverted alphabet triangle**
+
+```css
+ABCD
+ABC
+AB
+A
+```
+
+### **Pyramid of characters**
+
+```css
+   A
+  ABA
+ ABCBA
+```
+
+### 🔹 **Advanced Patterns**
+
+### **Butterfly pattern**
+
+```markdown
+*      *
+**    **
+***  ***
+********
+***  ***
+**    **
+*      *
+```
+
+### **Hollow square**
+
+```markdown
+*****
+*   *
+*   *
+*   *
+*****
+```
+
+### **Hollow pyramid**
+
+```markdown
+    *
+   * *
+  *   *
+ *******
+```
+
+### **Hourglass pattern**
+
+```markdown
+*******
+ *****
+  ***
+   *
+  ***
+ *****
+*******
+```
+
+### **Zig-zag pattern**
+
+```markdown
+  *   *   *
+*   *   *   *
+```
+
+### 🔹 **Special Patterns**
+
+### **0-1 Triangle**
+
+```
+1
+0 1
+1 0 1
+0 1 0 1
+```
+
+### **Binary triangle (alternating)**

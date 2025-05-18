@@ -1,0 +1,48 @@
+- [ ] Currying
+	- [ ] Real-world Use Case of Currying: **Event Tracking / Analytics
+	- [ ] 🔧 Without Currying:
+	- [ ] 🔥 With Currying (More Reusable & Clean):
+	- [ ] 🧠 Even Cleaner with Arrow Functions:
+	- [ ] Other Real Use Cases of Currying:
+	- [ ] 1. Event Tracking / Logging
+	- [ ] 2. Authorization & Role Checking (e.g., in Express middleware)
+	- [ ] 3. Styling Components (Theming)
+	- [ ] 4. API Request Builders
+	- [ ] 5. Form Field Validators
+	- [ ] 6. Custom React Hooks Logic with Configurable Behavior
+	- [ ] 7. Event Binding with Parameters
+	- [ ] 8. Internationalization / Translations
+	- [ ] 9. Reusable Math/Utility Functions
+	- [ ] 10. Redux-like Action Creators
+- [ ] Accessing Nested Objects
+	- [ ] 1: with **Dot Notation
+	- [ ] 2: with **Bracket Notation
+	- [ ] 3: **Safe Access with Optional Chaining** (ES2020+)
+	- [ ] Example 4: Accessing Dynamically with Variables
+	- [ ] ❗ Tip: When accessing deeply nested keys, always check for existence or use optional chaining to avoid errors.
+- [ ] Pattern Questions
+	🔹 **Basic Star Patterns
+	- [ ] Right-angled triangle
+	- [ ] Inverted right-angled triangle
+	- [ ] Pyramid pattern
+	- [ ] Inverted pyramid
+	- [ ] Diamond pattern
+	🔹 **Number Patterns
+	- [ ] Number triangle
+	- [ ] Inverted number triangle
+	- [ ] Right-aligned number triangle
+	- [ ] Floyd's Triangle
+	- [ ] Pascal’s Triangle
+	🔹 **Alphabet Patterns
+	- [ ] Alphabet triangle
+	- [ ] Inverted alphabet triangle
+	- [ ] Pyramid of characters
+	🔹 **Advanced Patterns
+	- [ ] Butterfly pattern
+	- [ ] Hollow square
+	- [ ] Hollow pyramid
+	- [ ] Hourglass pattern
+	- [ ] Zig-zag pattern
+	🔹 **Special Patterns
+	- [ ] 0-1 Triangle
+	- [ ] Binary triangle (alternating)
