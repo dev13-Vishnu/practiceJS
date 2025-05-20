@@ -1,6 +1,28 @@
 
+// import React, { Suspense, useState } from 'react';
 import './App.css'
-import WindowSizeComponent from './components/WindowSizeComponent'
+import UseContext from './components/UseContext/UseContext'
+// import Portals from './components/Portals/Portals';
+// import Parent from './components/useCallback/Parent'
+// import LocalStorageList from './components/LocalStorageList'
+// import ListUI from './components/ListUI'
+// import ToggleButtonReducer from './components/ToggleButton/ToggleButtonReducer'
+// import ToggleButtonState from './components/ToggleButton/ToggleButtonState'
+
+// import ToDoApp from './components/To-DoUseReducer/ToDoApp'
+
+// import CounterWithReducer from './components/CounterWithReducer'
+// import CounterWithState from './components/CounterWithState'
+
+// import CustomAlert from './components/Alerts/CustomAlert'
+// import BasicAlert from './components/Alerts/BasicAlert'
+
+// import ExpensiveCalculation from './components/ExpensiveCalculation'
+
+// import ClickCounter from './components/HOC/ClickCounter'
+// import WithCounter from './components/HOC/WithCounter'
+
+// import WindowSizeComponent from './components/WindowSizeComponent'
 // import UseRefTimer from './components/UseRefTimer'
 // import CounterComponent from './components/CustomHookCounter.js/CounterComponent'
 
@@ -26,7 +48,15 @@ import WindowSizeComponent from './components/WindowSizeComponent'
 
 // import Timer from './components/Timer'
 
+// const EnhancedClickCounter = WithCounter(ClickCounter);
+
+//Lazy import
+
+// const HeavyComponent = React.lazy(() => import('./components/HeavyComponent'));
+
 function App() {
+
+  // const [show, setShow] = useState(false);
 
   return (
     <>
@@ -54,7 +84,33 @@ function App() {
       </CounterProvider> */}
       {/* <CounterComponent/> */}
       {/* <UseRefTimer/> */}
-      <WindowSizeComponent/>
+      {/* <WindowSizeComponent/> */}
+      {/* <div>
+        <h1>Higher-Order Component Example</h1>
+        <EnhancedClickCounter/>
+      </div> */}
+      {/* <ExpensiveCalculation/> */}
+      {/* <BasicAlert/> */}
+      {/* <CustomAlert/> */}
+      {/* <CounterWithState/> */}
+      {/* <CounterWithReducer/> */}
+      {/* <ToDoApp/> */}
+      {/* <ToggleButtonState/> */}
+      {/* <ToggleButtonReducer/> */}
+      {/* <ListUI/> */}
+      {/* <LocalStorageList/> */}
+      {/* <Parent/> */}
+      {/* <div style={{ padding: '20px'}}>
+        <h1> 🚀 Lazy Loding Example</h1>
+        <button onClick={() => setShow(true)}>
+          Load Heavy Component
+        </button>
+        <Suspense fallback = { <p>Loading...</p>}>
+          {show && <HeavyComponent/>}
+        </Suspense>
+      </div> */}
+      {/* <Portals/> */}
+      <UseContext/>
     </>
   )
 }
