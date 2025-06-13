@@ -22,9 +22,7 @@ class Trie{
     search(word) {
         let current = this.root;
         for(let char of word){
-            if(!current.children[char]) {
-                current.children[char] = new TrieNode();
-            }
+            if(!current.children[char]) return false
             current = current.children[char];
 
         }

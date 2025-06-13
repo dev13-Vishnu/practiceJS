@@ -7,8 +7,11 @@ class HashTable{
         let total = 0;
         for(let i = 0; i < key.length; i++) {
             total += key.charCodeAt(i);
+            // console.log(`hash:,${key[i]},${key.charCodeAt(i)}, total: ${total}`)
         }
+        // console.log("return total:", total %this.size);
         return total % this.size;
+        
     }
     set(key, value){
         const index = this.hash(key);

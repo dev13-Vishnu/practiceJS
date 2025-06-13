@@ -35,6 +35,7 @@ class Trie {
         }
         return true;
     }
+    
 }
 
 const trie = new Trie()
