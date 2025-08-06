@@ -72,14 +72,14 @@ class BinaryTree{
 
         let leftMin = this.findMin(node.left);
         let rightMin = this.findMin(node.right);
-        return node.value< leftMin && node.value < rightMin ? node.value: leftMin< rightMin? leftMin: rightMin
+        return Math.min(node.value, leftMin, rightMin);
     }
     findMax(node = this.root) {
         if(!node) return -Infinity;
 
         let leftMax = this.findMax(node.left);
         let rightMax =  this.findMax(node.right);
-        return node.value >leftMax && node.value > rightMax ? node.value: leftMax> rightMax? leftMax: rightMax;
+        return Math.max(node.value, leftMax, rightMax);
     }
     isBst(node = this.root, min = -Infinity, max = Infinity) {
         if(!node) return true;
@@ -113,12 +113,12 @@ class BinaryTree{
 
         return node1.value === node2.value && this.areIdentical(node1.left,node2.left) && this.areIdentical(node1.right, node2.right);
     }
-    conuntLeaves(node = this.root) {
+    countLeaves(node = this.root) {
         if(!node) return 0;
 
         if(!node.left && !node.right) return 1;
 
-        return this.conuntLeaves(node.left) + this.conuntLeaves(node.right);
+        return this.countLeaves(node.left) + this.countLeaves(node.right);
     }
     
 }
@@ -138,8 +138,8 @@ console.log(bt.postOrder());
 
 console.log(bt.height());
 console.log(bt.countNodes());
-console.log(bt.findMin());
-console.log(bt.findMax());
+console.log("find",bt.findMin());
+console.log("find",bt.findMax());
 
 console.log(bt.isBst());
 const bst = new BinaryTree()
@@ -156,6 +156,6 @@ console.log(bt.levelOrder());
 console.log(bst.levelOrder());
 console.log(bt.areIdentical(bt.root,bt2.root));
 console.log(bst.areIdentical(bst.root,bt2.root));
-console.log(bt.conuntLeaves());
-console.log(bt2.conuntLeaves());
-console.log(bst.conuntLeaves());
+console.log(bt.countLeaves());
+console.log(bt2.countLeaves());
+console.log(bst.countLeaves());

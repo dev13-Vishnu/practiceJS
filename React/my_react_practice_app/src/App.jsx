@@ -1,7 +1,7 @@
 
 // import React, { Suspense, useState } from 'react';
 import './App.css'
-import ConditionalRenderingDemo from './components/ConditionalRenderingDemo'
+// import ConditionalRenderingDemo from './components/ConditionalRenderingDemo'
 // import UseContext from './components/UseContext/UseContext'
 // import Portals from './components/Portals/Portals';
 // import Parent from './components/useCallback/Parent'
@@ -27,9 +27,9 @@ import ConditionalRenderingDemo from './components/ConditionalRenderingDemo'
 // import UseRefTimer from './components/UseRefTimer'
 // import CounterComponent from './components/CustomHookCounter.js/CounterComponent'
 
-// import CounterControls from './components/useContextConter/CounterControls'
-// import CounterDisplay from './components/useContextConter/CounterDisplay'
-// import CounterProvider from './components/useContextConter/CounterProvider'
+import CounterControls from './components/useContextConter/CounterControls'
+import CounterDisplay from './components/useContextConter/CounterDisplay'
+import CounterProvider from './components/useContextConter/CounterProvider'
 
 // import AsyncInsideUseEffect from './components/AsyncInsideUseEffect'
 // import LifeCycleExample from './components/LifeCycleExample'
@@ -76,13 +76,15 @@ function App() {
       {/* <LiveHeading/> */}
       {/* <LifeCycleExample/> */}
       {/* <AsyncInsideUseEffect/> */}
-      {/* <CounterProvider>
+
+      <CounterProvider>
         <div style={{textAlign: 'center', marginTop:'40px'}}>
           <h1>useContex Counter</h1>
           <CounterDisplay/>
           <CounterControls/>
         </div>
-      </CounterProvider> */}
+      </CounterProvider>
+      
       {/* <CounterComponent/> */}
       {/* <UseRefTimer/> */}
       {/* <WindowSizeComponent/> */}
@@ -112,7 +114,7 @@ function App() {
       </div> */}
       {/* <Portals/> */}
       {/* <UseContext/> */}
-      <ConditionalRenderingDemo/>
+      {/* <ConditionalRenderingDemo/> */}
     </>
   )
 }

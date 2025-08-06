@@ -11,7 +11,8 @@ class MinHeap{
         let index = this.heap.length-1;
         while (index > 0) {
             let parentIndex = Math.floor((index -1)/2);
-            if(this.heap[parentIndex] < this.heap[index]) break;                [this.heap[parentIndex],this.heap[index]] = [this.heap[index],this.heap[parentIndex]]
+            if(this.heap[parentIndex] < this.heap[index]) break;                
+            [this.heap[parentIndex],this.heap[index]] = [this.heap[index],this.heap[parentIndex]]
             index = parentIndex;
             
         }
@@ -25,25 +26,28 @@ class MinHeap{
     }
     bubbleDown() {
         let index = 0;
-        let length = this.heap.length;
-        let swap = null;
-        while(true) {
-            let leftChildIndex = 2 * index +1;
-            let rightChildIndex = 2 * index + 2;
-
-            if(leftChildIndex < length && this.heap [index] < this.heap[leftChildIndex]){
-                swap = leftChildIndex;
+        const length = this.heap.length;
+    
+        while (true) {
+            let left = 2 * index + 1;
+            let right = 2 * index + 2;
+            let smallest = index;
+    
+            if (left < length && this.heap[left] < this.heap[smallest]) {
+                smallest = left;
             }
-            if(rightChildIndex < length && this.heap[index]< this.heap[rightChildIndex]){
-                swap = rightChildIndex;
+    
+            if (right < length && this.heap[right] < this.heap[smallest]) {
+                smallest = right;
             }
-            if(!swap) break;
-            [this.heap[index], this.heap[swap]] = [this.heap[swap], this.heap[index]];
-            index = swap;
+    
+            if (smallest === index) break;
+    
+            [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
+            index = smallest;
         }
-
-
     }
+    
 }
 
  let minHeap = new MinHeap();

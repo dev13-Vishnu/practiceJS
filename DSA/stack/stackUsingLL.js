@@ -1,4 +1,3 @@
-const { join } = require("path");
 
 class Node {
     constructor(value) {

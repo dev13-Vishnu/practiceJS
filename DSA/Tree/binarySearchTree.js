@@ -50,6 +50,53 @@ class BinarySearchTree{
 
         return this.isBst(node.left,min,node.value) && this.isBst(node.right, node.value , max)
     }
+    search(value){
+        let current = this.root;
+        while(current){
+            if(value === current.value){
+                return true;
+            }
+            current = value < current.value? current.left:current.right;
+        }
+        return false;
+    }
+    maxValue(node= this.root){
+        if(!node) return null;
+        while(node.right){
+            node = node.right;
+        }
+        return node.value;
+    }
+    minValue(node= this.root){
+        if(!node) return null;
+        while(node.left){
+            node = node.left;
+        }
+        return node.value;
+    }
+    delete(value,node =this.root){
+        if(!node) return null;
+        if(value< node.value){
+            node.left = this.delete (value, node.left);
+        } else if (value > node.value){
+            node.right = this.delete(value, node.right)
+        } else {
+            if(!node.left && !node.right) return null;
+            if(!node.left ) return node.right;
+            if(!node.right) return node.left;
+            
+            const  minRight = this.minValueNode(node.right);
+            node.value = minRight.value;
+            node.right = this.delete(minRight.value, node.right);
+        }
+        return node; 
+    }
+    minValueNode(node){
+        while(node.left){
+            node = nodeleft;
+        }
+        return node;
+    }
 }
 
 
@@ -67,3 +114,5 @@ console.log(bst.inOrder());
 console.log(bst1.inOrder());
 console.log(bst.isBst());
 console.log(bst1.isBst());
+console.log(bst.minValue());
+console.log(bst.maxValue());

@@ -24,7 +24,7 @@ class Queue {
     }
 
     display() {
-        console.log("elements in the queue : ", this.items.join('->'));
+        console.log("elements in the queue : ", this.items.join('<-'));
     }
 }
 
