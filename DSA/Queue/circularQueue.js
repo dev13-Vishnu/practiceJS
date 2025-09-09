@@ -20,6 +20,6 @@ class CircularQueue{
             this.front = 0;
         }
         this.rear = (this.rear+ 1) % this.capacity;
-        this.items[this.rear] = elementca
+        this.items[this.rear] = element
     }
 }
