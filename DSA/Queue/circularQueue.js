@@ -22,4 +22,53 @@ class CircularQueue{
         this.rear = (this.rear+ 1) % this.capacity;
         this.items[this.rear] = element
     }
+    dequeue(){
+        if(this.isEmpty()){
+            console.log("Queue is empty.");
+            return null;
+        }
+        let removed = this.items[this.front];
+        if(this.front=== this.rear) {
+            this.front = this.rear = -1;
+        } else {
+            this.front = (this.front + 1) % this.capacity;
+        }
+        return removed;
+    }
+    peek(){
+        if(this.isEmpty()) return "Queue is empty.";
+        return this.items[this.front];
+    }
+    print() {
+        if(this.isEmpty()){
+            console.log("The Queue is Empty");
+            return;
+        }
+        let result = [];
+        let i = this.front;
+        while(true){
+            result.push(this.items[i]);
+            if(i === this.rear) break;
+            i = (i+1) % this.capacity;
+        }
+        console.log(result.join("<-"));
+    }
+
 }
+
+const cq = new CircularQueue(5);
+
+cq.enqueue(10);
+cq.enqueue(20);
+cq.enqueue(30);
+cq.enqueue(40);
+cq.print();  // 10 <- 20 <- 30 <- 40
+
+console.log(cq.dequeue()); // 10
+cq.print();  // 20 <- 30 <- 40
+
+cq.enqueue(50);
+cq.enqueue(60);
+cq.print();  // 20 <- 30 <- 40 <- 50 <- 60
+
+cq.enqueue(70); // Queue is full
