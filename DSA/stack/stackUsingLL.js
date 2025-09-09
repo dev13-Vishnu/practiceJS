@@ -1,50 +1,92 @@
-
 class Node {
-    constructor(value) {
-        this.value = value;
+    constructor(data){
+        this.value = data;
         this.next = null;
     }
 }
-
 class Stack{
-    constructor () {
+    constructor(){
         this.top = null;
-        this.size = 0
+        this.count = 0;
     }
     push(value) {
-        const newNode = new Node(value);
-
-        newNode.next = this.top;
-        this.top = newNode;
-        this.size ++;
+        const node = new Node(value);
+        node.next = this.top;
+        this.top   = node;
+        this.count++;
     }
-    isEmpty() {
-        return this.size === 0;
+    pop() {
+        if(this.isEmpty()) return null;
+        let popped = this.top.value;
+        this.top = this.top.next;
+        this.count--;
+        return popped;
     }
     peek() {
-        if(this.isEmpty()){
-            return "the stack is empty";
+        return this.isEmpty() ? null : this.top.value;
+    }
+    isEmpty(){
+        return this.count === 0;
+    }
+    size () {
+        return this.count;
+    }
+    clear() {
+        this.top = null;
+        this.count = 0;
+    }
+    print() {
+        let current = this.top
+        let result = [];
+        while (current) {
+            result.push(current.value);
+            current = current.next;
         }
-        return this.top.value;
+         console.log("Stack (top-> botton):", result.join(" "));
     }
-    pop(){
-        if(this.isEmpty()) return "the stack is empty."
-        let popped= this.top;
-        this.top = this.top.next;
-        this.size --;
-        return popped.value;
+    toArray() {
+        let current = this.top;
+        let result =[];
+        while (current ) {
+            result.push(current.value);
+            current= current.next;
+        }
+        return result;
     }
-
+    search(value){
+        let current = this.top;
+        let position = 1;
+        while(current ) {
+            if(current.value === value){
+                return position;
+            }
+            current = current.next;
+            position++;
+        }
+        return null;
+    }
+    clone() {
+        const newStack = new Stack();
+        let elements = this.toArray().reverse();
+        for(let val of elements){
+            newStack.push(val);
+        }
+        return newStack;
+    }
 }
 
 const stack = new Stack();
 
-stack.push(5);
-console.log(stack.peek());
 stack.push(10);
-console.log(stack.peek());
-console.log(stack.pop());
-console.log(stack.pop());
-console.log(stack.peek());
+stack.push(20);
+stack.push(30);
 
+stack.print(); // Stack (top -> bottom): 30 20 10
+console.log(stack.pop());    // 30
+console.log(stack.peek());   // 20
+console.log(stack.size());   // 2
+console.log(stack.search(10)); // 2
+console.log(stack.toArray()); // [20, 10]
 
+const clonedStack = stack.clone();
+clonedStack.print(); // Stack (top -> bottom): 20 10
