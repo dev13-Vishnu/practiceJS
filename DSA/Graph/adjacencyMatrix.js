@@ -34,6 +34,47 @@ class Graph{
             console.log(this.vertices[i], row.join(" "));
         });
     }
+    dfs(start) {
+        let visited = new Array(this.vertices.length).fill(false);
+        let result = [];
+
+        dfsHelper = (idx) => {
+            visited[idx] = true;
+            result.push(this.vertices[idx])
+
+            for(let i = 0; i < this.vertices.length; i++){
+                if(thisl.matrix[idx][i] !== 0 && !visited){
+                    dfsHelper(i);
+                }
+            }
+        }
+
+        const startIndex = this.vertices.indexOf(start);
+        dfsHelper(startIndex);
+        return result;
+    }
+    bfs(start){
+        let visited = new Array(this.vertices.length).fill(false);
+        const result =[];
+        const queue = [];
+
+        const startIndex = this.vertices.indexOf(start);
+        visited[startIndex] = true;
+        queue.push(startIndex);
+
+        while(queue.length > 0){
+            let idx = queue.shift();
+            result.push(this.vertices[idx]);
+
+            for(let i = 0; i < this.vertices.length; i++) {
+                if(this.matrix[idx][i] !== 0 && !visited[i]){
+                    visited[i] = true;
+                    queue.push(i);
+                }
+            }
+        }
+        return result;
+    }
 }
 
 const g = new Graph();
