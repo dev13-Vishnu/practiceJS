@@ -44,7 +44,7 @@ class MinHeap{
             if (smallest === index) break;
     
             [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
-            index = smallest;
+            index = smallest; 
         }
     }
     

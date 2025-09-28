@@ -52,6 +52,6 @@
 // ll.printList();
 // console.log(ll.findMiddle());
 
-function height(node = this.root) {
-    if()
-}
+// function height(node = this.root) {
+//     if()
+// }

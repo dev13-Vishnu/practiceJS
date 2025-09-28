@@ -31,7 +31,7 @@
 
 function mergeSort (arr, lb= 0, ub= arr.length -1) {
 	if(lb < ub) {
-		let mid = Math.floor((ub+ lb)/2);
+		let mid = Math.floor((ub +  lb)/2);
 		mergeSort(arr,lb,mid);
 		mergeSort(arr,mid + 1, ub);
 		merge(arr,lb, mid, ub);

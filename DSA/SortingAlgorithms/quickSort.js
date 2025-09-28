@@ -1,4 +1,4 @@
-function partition(arr,lb, ub) {
+	function partition(arr,lb, ub) {
 	let start = lb;
 	let end = ub;
 	
