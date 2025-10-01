@@ -1,6 +1,11 @@
 
 // import React, { Suspense, useState } from 'react';
 import './App.css'
+// import { Parent } from './components/ParentToChild'
+// import ChildToParent from './components/ChildToParent/ChildToParent'
+import Counter from './components/counter/counter'
+// import TwoInputSame from './components/twoInputSame/TwoInputSame'
+// import UncontrolledComponent from './components/uncontrolledComponent/UncontrolledComponent'
 // import ConditionalRenderingDemo from './components/ConditionalRenderingDemo'
 // import UseContext from './components/UseContext/UseContext'
 // import Portals from './components/Portals/Portals';
@@ -37,7 +42,7 @@ import './App.css'
 // import MatchInputs from './components/MatchInputs'
 // import RefStorageExample from './components/RefStorageExample'
 // import ParentComponent from './components/CommChild-ParentUseRef.jsx/ParentComponent'
- import ParentComponent from './components/PassingCallback/ParentComponent'
+//  import ParentComponent from './components/PassingCallback/ParentComponent'
 // import ParentComponent from './components/PassiingState/ParentComponent'
 // import Counter  from './components/Counter'
 // import TextColorChanger from './components/TextColorChanger'
@@ -70,7 +75,7 @@ function App() {
       {/* <Counter/> */}
       {/* <ParentComponent/> */}
       {/* <ParentComponent/> */}
-       <ParentComponent/> 
+       {/* <ParentComponent/>  */}
       {/* <RefStorageExample/> */}
       {/* <MatchInputs/> */}
       {/* <LiveHeading/> */}
@@ -115,6 +120,11 @@ function App() {
       {/* <Portals/> */}
       {/* <UseContext/> */}
       {/* <ConditionalRenderingDemo/> */}
+      {/* <Parent/> */}
+      {/* <ChildToParent/> */}
+      {/* <UncontrolledComponent/> */}
+      {/* <TwoInputSame/> */}
+      <Counter/>
     </>
   )
 }
